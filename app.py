@@ -25,6 +25,7 @@ def home_page():
 
     return render_template('/index.html', pets=pets)
 
+
 @app.route('/add', methods=['GET','POST'])
 def add_pet():
     """Pet add form; handle adding"""
@@ -38,4 +39,4 @@ def add_pet():
         notes = form.notes.data
         return redirect('/')
     else:
-        return render_template('/index.html', form=form)
+        return render_template('/add_form.html', form=form)
