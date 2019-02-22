@@ -14,3 +14,12 @@ debug = DebugToolbarExtension(app)
 
 connect_db(app)
 # db.create_all()
+
+
+@app.route('/')
+def home_page():
+    ''' Display home page and pets to client. '''
+
+    pets = Pet.query.all()
+
+    return render_template('/index.html', pets=pets)
