@@ -4,7 +4,7 @@ from wtforms import StringField, FloatField
 from wtforms.validators import InputRequired, Optional, Email
 from flask_debugtoolbar import DebugToolbarExtension
 from models import Pet, db, connect_db
-from forms import 
+from forms import AddPet
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgres:///adopt"
@@ -24,3 +24,18 @@ def home_page():
     pets = Pet.query.all()
 
     return render_template('/index.html', pets=pets)
+
+@app.route('/add', methods=['GET','POST'])
+def add_pet():
+    """Pet add form; handle adding"""
+    form = AddPet()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        species = form.species.data
+        photo_url = form.photo_url.data
+        age = form.age.data
+        notes = form.notes.data
+        return redirect('/')
+    else:
+        return render_template('/index.html', form=form)
