@@ -1,10 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import InputRequired, Optional, URL, NumberRange
-from wtforms import StringField,
-                    IntegerField,
-                    BooleanField,
-                    TextAreaField,
-                    SelectField
+from wtforms import StringField, IntegerField, BooleanField, TextAreaField, SelectField
 
 
 class AddPet(FlaskForm):

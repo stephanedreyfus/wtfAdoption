@@ -9,8 +9,9 @@ Adoption Home
 <div class="container">
     {% for pet in pets %}
     <div>
-        {{ pet.photo_url }} <br>
-       <p>{{ pet.name }} 
+        <img src="{{ pet.photo_url }}" alt="">
+        <br>
+       <p><a href="/{{pet.id}}">{{ pet.name }}</a>
            <span>
                 {% if pet.available %}
                     is available!

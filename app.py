@@ -30,7 +30,6 @@ def home_page():
 def add_pet():
     """Pet add form; handle adding"""
     form = AddPet()
-    #import pdb; pdb.set_trace()
     if form.validate_on_submit():
         name = form.name.data
         species = form.species.data
@@ -49,3 +48,12 @@ def add_pet():
         return redirect('/')
     else:
         return render_template('/add_form.html', form=form)
+
+
+@app.route('/<int:pet_id>', methods=['GET, POST'])
+def show_and_edit(pet_id):
+    ''' Shows pet details and detail edit form '''
+
+    pet = Pet.query.get(pet_id)
+
+
