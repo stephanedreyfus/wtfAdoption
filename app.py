@@ -30,7 +30,7 @@ def home_page():
 def add_pet():
     """Pet add form; handle adding"""
     form = AddPet()
-
+    #import pdb; pdb.set_trace()
     if form.validate_on_submit():
         name = form.name.data
         species = form.species.data
