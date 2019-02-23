@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ pet.name }}
+{% endblock %}}
+
+{% block content %}
+<h1>{{ pet.name }}'s Page</h1>
+<div class="container">
+    <div>
+        {% if pet.photo_url != '' %}
+            <img src="{{ pet.photo_url }}" alt="No Image!">
+        {% endif %}
+        <p>
+            {{ pet.name }}
+        </p>
+        {% if pet.age != '' %}
+        <p>
+            {{ pet.age }}<br>
+        </p>
+        {% endif %}
+        {% if pet.species != '' %}
+        <p>
+            {{ pet.species }}<br>
+        </p>
+        {% endif %}
+    </div>
+
+    <form action="/{{pet.id}}" method="POST">
+        {{ form.hidden_tag() }}
+
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+        <p>
+            {{ field.label }}
+            {{ field }}
+
+            {% for error in field.errors %}
+            {{ error }}
+            {% endfor %}
+        </p>
+        {% endfor %}
+        <button type="submit" class="add_btn">Edit</button>
+    </form>
+</div>
+{% endblock %}}}
